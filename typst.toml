@@ -1,0 +1,13 @@
+[package]
+name = "brownbag"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Andrea Recine"]
+license = "MIT"
+description = "Minimal Touying theme for academic talks in economics and econometrics."
+repository = "https://github.com/andrerecio/typst-academic-slides"
+keywords = ["touying", "slides", "presentation", "academic", "economics"]
+categories = ["presentation"]
+disciplines = ["economics", "mathematics", "statistics"]
+compiler = "0.12.0"
+exclude = ["examples", "tests", "fonts", "*.pdf", "CLAUDE.md"]

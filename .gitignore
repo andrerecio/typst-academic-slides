@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Typst: compiled decks and locally downloaded fonts
+*.pdf
+/fonts/
+
+# macOS
+.DS_Store
