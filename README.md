@@ -9,11 +9,79 @@ econometrics, and macroeconomics.
 
 ![Six slides from the example deck: title, research question, an equation, an assumption with a proposition and proof, a figure, and a regression table](assets/preview.png)
 
-The slides above are from [`examples/seminar.typ`](examples/seminar.typ). A
-deck starts like this:
+The slides above are from [`examples/seminar.typ`](examples/seminar.typ).
+
+## Quick start
+
+You need [Typst](https://github.com/typst/typst#installation) 0.12 or later
+(0.15 recommended) and the three [fonts](#fonts). Touying is downloaded by
+Typst on first compile.
+
+1. **Install the theme as a local package.** Until it is on Typst Universe,
+   clone it into Typst's local package directory:
+
+   ```sh
+   # macOS
+   git clone https://github.com/andrerecio/typst-academic-slides \
+     ~/Library/Application\ Support/typst/packages/local/brownbag/0.1.0
+
+   # Linux
+   git clone https://github.com/andrerecio/typst-academic-slides \
+     ~/.local/share/typst/packages/local/brownbag/0.1.0
+   ```
+
+   On Windows the directory is `%APPDATA%\typst\packages\local\brownbag\0.1.0`.
+
+2. **Write a deck.** Anywhere on your machine, create `talk.typ`:
+
+   ```typst
+   #import "@local/brownbag:0.1.0": *
+
+   #show: brownbag-theme.with(
+     config-info(
+       title: [My Talk],
+       author: "Jane Doe",
+       institution: [University of Example],
+       date: datetime.today(),
+     ),
+   )
+
+   #title-slide()
+
+   = Introduction        // section slide
+
+   == First slide        // content slide
+
+   - A point.
+
+   #pause
+
+   - A second point, revealed on the next step.
+   ```
+
+3. **Compile it** to `talk.pdf`, or recompile on every save:
+
+   ```sh
+   typst compile talk.typ
+   typst watch talk.typ
+   ```
+
+   Present the PDF with any viewer's full-screen mode. In VS Code, the
+   [Tinymist](https://github.com/Myriad-Dreamin/tinymist) extension gives a
+   live preview.
+
+Alternatively, without installing anything: copy `lib.typ` and `src/` next to
+your deck and use `#import "lib.typ": *`. On [typst.app](https://typst.app),
+upload those files and the fonts to the project.
+
+Decks are written in Typst. There is no Quarto format: Quarto can output Typst,
+but it goes through Pandoc's own template, and this theme ships no Quarto
+extension for it.
+
+## A fuller example
 
 ```typst
-#import "lib.typ": *
+#import "@local/brownbag:0.1.0": *
 
 #show: brownbag-theme.with(
   accent: "blue",   // or any color, e.g. rgb("#8c2131")
