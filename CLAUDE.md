@@ -16,7 +16,10 @@ counters, handouts and speaker notes all stay in Touying.
 typst compile --root . examples/seminar.typ
 typst watch   --root . examples/seminar.typ
 
-# Render pages to PNG for visual review (the only "test" there is so far)
+# Run regression checks (requires Python 3 and pypdf)
+python3 -m unittest discover -s tests -v
+
+# Render pages to PNG for visual review
 typst compile --root . examples/seminar.typ "out/s-{0p}.png" --ppi 110
 typst compile --root . --pages 9 examples/seminar.typ out/p9.png --ppi 400   # one page, zoomed
 
@@ -32,8 +35,8 @@ typst compile --root . assets/preview.typ assets/preview.png --ppi 144
   `typst fonts | grep -E "^(Inter|JetBrains Mono|STIX Two Math)$"` — trust this
   over any installer's report. To preview the degraded look:
   `--ignore-system-fonts --font-path <dir containing only Arial>`.
-- There is no test suite or linter yet. A change is verified by compiling
-  `examples/seminar.typ` with zero warnings and looking at the rendered pages.
+- Run the regression suite, then compile `examples/seminar.typ` with zero
+  warnings and look at the rendered pages. There is no linter yet.
   Low-ppi PNGs alias thin math strokes (braces look dashed); zoom before
   concluding a glyph is broken.
 - To try theme options without touching the repo, keep a scratch `.typ`
@@ -96,9 +99,17 @@ them away:
 
 Auto-sizing applies when `body` is an `image` without `width`/`height`
 (checked with `has()`: unset fields cannot be read on an unresolved element),
-or a `grid` without `rows` (panels under one caption). Known limitation:
-columns holding a figure are measured as `figure-min`, so an over-long text
-column beside a figure goes undetected.
+or a `grid` without `rows` (panels under one caption). Figure detection also
+looks through wrappers such as `align`, `block`, and `pad`. Caption order follows
+`figure.caption(position:)`.
+
+Columns keep the fractional fill at flow level. A labelled grid show rule runs
+after Touying processes reveals and compares natural column heights (with auto
+figures replaced by minimum-height placeholders) against the allocated height.
+The measurements are stored in metadata and queried before emitting a warning:
+only final-layout metadata is queryable, which avoids false warnings from the
+temporary 150pt region used during Touying's overflow measurement. Warnings use
+`uniwarn`, like Touying, with a `[brownbag]` prefix.
 
 ## Design rules
 
@@ -224,7 +235,7 @@ rules). Do not reintroduce them.
 
 Next:
 
-5. Release — `template/`, thumbnail, `[template]` in `typst.toml`, test script,
+5. Release — `template/`, thumbnail, `[template]` in `typst.toml`,
    Typst Universe submission (needs a final package name).
 
 Dark mode is deferred; keeping all colors in `tokens.typ` is what makes it cheap later.

@@ -209,13 +209,11 @@
             parts.at(1)
           }
           let inset = it.inset
-          let padded = pad(
-            left: inset.at("left", default: 0pt),
-            right: inset.at("right", default: 0pt),
-            top: inset.at("top", default: 0pt),
-            bottom: inset.at("bottom", default: 0pt),
-            body,
-          )
+          let padded = if type(inset) == dictionary {
+            pad(..inset, body)
+          } else {
+            pad(inset, body)
+          }
           if it.align == auto { padded } else { align(it.align, padded) }
         }
         // A table that declares its own top rule, `table.hline(y: 0)`, draws

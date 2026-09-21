@@ -70,7 +70,6 @@ argument:
 | `#focus-slide[..]` | One large statement: the research question, the takeaway, "Thank you". |
 | `#muted[..]` | De-emphasised text, e.g. a subtitle on the first line of a slide. |
 | `#alert[..]` | The accent color. `*strong*` is weight only. |
-
 | `#keypoint[..]` | The one sentence to remember from the slide. |
 | `#source[..]` | "Source: …" line at the bottom of the slide. Put it last. |
 | `#goto(<label>)[..]` | Link to a backup slide, which gets a "Back" link. See below. |
@@ -297,7 +296,12 @@ content height: 374.48pt, available height: 355.56pt).
 ```
 
 (Typst prints this inside an "unknown font family" warning; that is how Touying
-emits warnings, not a font problem.) For a slide that is meant to run over
+emits warnings, not a font problem.) Figure columns also check their final
+available height and emit a `[brownbag] detecting column content overflow`
+warning if the text beside a figure is too tall. These warnings do not shrink
+the content; shorten it or reduce its text size before presenting.
+
+For a slide that is meant to run over
 several pages, such as a long reference list, opt out for that slide:
 
 ```typst
@@ -373,6 +377,18 @@ example:
 ```sh
 typst compile --root . assets/preview.typ assets/preview.png --ppi 144
 ```
+
+## Regression checks
+
+With Typst, the fonts above, Python 3, and the Python package `pypdf` installed:
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+The checks compile temporary decks and verify table padding, caption placement,
+figure-column overflow, source-line clearance, reveals, and backup links.
+They leave no generated decks in the repository.
 
 ## License
 
