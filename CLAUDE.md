@@ -123,7 +123,10 @@ temporary 150pt region used during Touying's overflow measurement. Warnings use
   Titles (slide, section, deck, focus) are not the accent but `title-ink(accent)`
   in `tokens.typ`: the accent's hue at ink darkness (blue gives navy, `mono`
   stays ink), so `#alert` remains the brightest thing on a slide. Never set a
-  title in the accent itself.
+  title in the accent itself. Slide titles are bold (700) over a hairline rule.
+  The one exception to "accent on text only" is `#highlight`, a warm
+  highlighter-pen fill (`marker` in `tokens.typ`, after JambroBeamerTheme); it
+  is never the accent. List bullets stay the quiet grey `•` / `–`.
 - **Margins are moderate, not keynote-wide** (40pt sides, 78pt top, 40pt
   bottom): the body is about 68% of the page, because regression tables and
   figures need the room. Do not widen them back, and do not go edge-to-edge

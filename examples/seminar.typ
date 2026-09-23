@@ -38,7 +38,7 @@ In the data, that channel is small.
 
 #pause
 
-- Many households hold little liquid wealth and have a high marginal propensity to consume.
+- Many households hold #highlight[little liquid wealth] and have a high marginal propensity to consume.
 - Their consumption responds to #alert[income], not to the real rate $r_t$.
   - So the indirect, general-equilibrium effect carries most of the transmission.
 

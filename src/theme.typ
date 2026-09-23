@@ -140,6 +140,7 @@
         )
 
         show link: set text(fill: self.colors.primary)
+        set highlight(fill: marker, extent: 0.08em, top-edge: "ascender", bottom-edge: "descender")
 
         // Code blocks are the one filled container in the theme.
         show raw.where(block: true): it => block(
