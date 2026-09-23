@@ -14,7 +14,7 @@
     inset: (bottom: 10pt),
     stroke: (bottom: 0.75pt + rule),
     {
-      set text(size: size.title, weight: 600, fill: title-ink(self.colors.primary), tracking: -0.01em)
+      set text(size: size.title, weight: 700, fill: title-ink(self.colors.primary), tracking: -0.01em)
       set par(leading: 0.4em)
       title
     },

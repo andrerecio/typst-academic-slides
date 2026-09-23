@@ -30,6 +30,7 @@
 #let ink-subtle = rgb("#818b98")
 #let rule = rgb("#d1d9e0")
 #let surface = rgb("#f6f8fa") // code blocks only
+#let marker = rgb("#ebcb8b") // `#highlight`, a highlighter pen; never the accent
 
 // ---------------------------------------------------------------------------
 // Accent presets. `accent:` also accepts any color.
@@ -37,6 +38,7 @@
 
 #let accents = (
   blue: rgb("#1a5fb4"),
+  navy: rgb("#2f5597"), // muted blue, closer to a classic beamer deck
   green: rgb("#1a7f37"),
   burgundy: rgb("#8c2131"),
   purple: rgb("#6e40c9"),
@@ -60,7 +62,7 @@
   display: 40pt, // section slide title
   deck-title: 34pt, // title slide; academic titles are long
   focus: 32pt, // focus slide
-  title: 26pt, // slide title
+  title: 27pt, // slide title
   subtitle: 22pt,
   body: 20pt, // default of the theme's `text-size`
   // Relative to the body, so that `text-size:` or a local

@@ -113,7 +113,7 @@ $ V_t (a, z) = max_(c, a') u(c) + beta EE_t [V_(t+1) (a', z')] $
 
 | Argument | Default | |
 |---|---|---|
-| `accent` | `"blue"` | `"blue"`, `"green"`, `"burgundy"`, `"purple"`, `"orange"`, `"mono"`, or any color. Titles take a near-black shade of the same hue (navy for blue); `"mono"` keeps them black |
+| `accent` | `"blue"` | `"blue"`, `"navy"`, `"green"`, `"burgundy"`, `"purple"`, `"orange"`, `"mono"`, or any color. Titles take a near-black shade of the same hue (navy for blue); `"mono"` keeps them black |
 | `aspect-ratio` | `"16-9"` | or `"4-3"` |
 | `footer` | `auto` | `auto` shows the short title; `none` leaves only the slide counter |
 | `text-size` | `20pt` | Body text size; see [Dense slides](#dense-slides) |
